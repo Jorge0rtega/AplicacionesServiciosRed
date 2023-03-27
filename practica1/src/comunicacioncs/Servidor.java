@@ -45,7 +45,7 @@ public class Servidor {
 
     public static void crearCarpetaServidor(String nombre, String ruta) {//crear una carpeta de manera local
         File carpeta = new File("Servidor/" + ruta.concat("/" + nombre));
-        System.out.println("carpeta = " + carpeta.getAbsolutePath());
+//        System.out.println("carpeta = " + carpeta.getAbsolutePath());
         if (!carpeta.exists()) {//si no existe la carpeta
             if (carpeta.mkdirs()) {//crea la carpeta
                 System.out.println("Directorio creado");
@@ -86,21 +86,21 @@ public class Servidor {
         DataOutputStream dos = null;
         ZipFiles zip = new ZipFiles();
         try {
-            System.out.println("test2");
+//            System.out.println("test2");
             dis = new DataInputStream(sm.getInputStream());//para metadatos
             dissd = new DataInputStream(sd.getInputStream());//para datos
             String nombre = dis.readUTF();
-            System.out.println("nombre = " + nombre);
+//            System.out.println("nombre = " + nombre);
             long tam = dis.readLong();
-            System.out.println("tam = " + tam);
-            System.out.println("Comienza descarga del archivo " + nombre + " de " + tam + " bytes\n\n");
+//            System.out.println("tam = " + tam);
+//            System.out.println("Comienza descarga del archivo " + nombre + " de " + tam + " bytes\n\n");
             dos = new DataOutputStream(new FileOutputStream("Servidor/" + ruta + "/" + nombre));
             long recibidos = 0;
             int l = 0, porcentaje = 0;
             while (recibidos < tam) {
                 byte[] b = new byte[1500];
                 l = dissd.read(b);
-                System.out.println("leidos: " + l);
+//                System.out.println("leidos: " + l);
                 dos.write(b, 0, l);
                 dos.flush();
                 recibidos = recibidos + l;
@@ -113,7 +113,7 @@ public class Servidor {
             zip.unzip("Servidor/" + ruta + "/" + nombre, "Servidor/" + ruta);
             File archivo = new File("Servidor/" + ruta + "/" + nombre);
             archivo.delete();
-            System.out.println("Archivo recibido..");
+            System.out.println("Archivo recibido...");
 
         } catch (IOException ex) {
             Logger.getLogger(Servidor.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +149,7 @@ public class Servidor {
             while (enviados < tam) {
                 byte[] b = new byte[1500];
                 l = dis.read(b);
-                System.out.println("enviados: " + l);
+//                System.out.println("enviados: " + l);
                 dosd.write(b, 0, l);
                 dosd.flush();
                 enviados = enviados + l;

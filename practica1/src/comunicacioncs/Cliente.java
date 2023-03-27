@@ -157,7 +157,7 @@ public class Cliente {
             while (enviados < tam) {
                 byte[] b = new byte[1500];
                 l = dis.read(b);
-                System.out.println("enviados: " + l);
+//                System.out.println("enviados: " + l);
                 dosd.write(b, 0, l);
                 dosd.flush();
                 enviados = enviados + l;
@@ -184,13 +184,13 @@ public class Cliente {
             pw.flush();
             DataInputStream dis = null;
 
-            System.out.println("test2");
+//            System.out.println("test2");
             dis = new DataInputStream(sm.getInputStream());//para metadatos
             dissd = new DataInputStream(sd.getInputStream());//para datos
             String nombre = dis.readUTF();
-            System.out.println("nombre = " + nombre);
+//            System.out.println("nombre = " + nombre);
             long tam = dis.readLong();
-            System.out.println("tam = " + tam);
+//            System.out.println("tam = " + tam);
             System.out.println("Comienza descarga del archivo " + nombre + " de " + tam + " bytes\n\n");
             dos = new DataOutputStream(new FileOutputStream("Cliente/" + rutaC + "/" + nombre));
             long recibidos = 0;
@@ -198,7 +198,7 @@ public class Cliente {
             while (recibidos < tam) {
                 byte[] b = new byte[1500];
                 l = dissd.read(b);
-                System.out.println("leidos: " + l);
+//                System.out.println("leidos: " + l);
                 dos.write(b, 0, l);
                 dos.flush();
                 recibidos = recibidos + l;
@@ -224,13 +224,13 @@ public class Cliente {
         File archivo = new File("Cliente/" + ruta);
 //        File nuevoArchivo = new File(nombre+archivo.getAbsolutePath().substring(archivo.getAbsolutePath().indexOf("."), archivo.getAbsolutePath().length()));
         File nuevoArchivo = new File(archivo.getAbsolutePath().substring(0, archivo.getAbsolutePath().lastIndexOf("\\") + 1) + nombre);
-        System.out.println("archivo = " + archivo.getAbsolutePath());
-        System.out.println("ruta = " + archivo.getAbsolutePath().substring(0, archivo.getAbsolutePath().lastIndexOf("\\") + 1));
+//        System.out.println("archivo = " + archivo.getAbsolutePath());
+//        System.out.println("ruta = " + archivo.getAbsolutePath().substring(0, archivo.getAbsolutePath().lastIndexOf("\\") + 1));
         if (nuevoArchivo.exists()) {
             System.out.println("Este nombre de archivo ya existe");
         }
         archivo.renameTo(nuevoArchivo);
-        System.out.println("nuevoArchivo = " + nuevoArchivo.getAbsolutePath());
+//        System.out.println("nuevoArchivo = " + nuevoArchivo.getAbsolutePath());
 
     }
 

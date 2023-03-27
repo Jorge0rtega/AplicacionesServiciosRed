@@ -59,7 +59,7 @@ public class ZipFiles {
             FileOutputStream fos = new FileOutputStream(zipDirName);
             ZipOutputStream zos = new ZipOutputStream(fos);
             for(String filePath : filesListInDir){
-                System.out.println("Comprimiendo "+filePath);
+//                System.out.println("Comprimiendo "+filePath);
                 //for ZipEntry we need to keep only relative file path, so we used substring on absolute path
                 ZipEntry ze = new ZipEntry(dir.getName()+filePath.substring(dir.getAbsolutePath().length(), filePath.length()));
                 zos.putNextEntry(ze);
@@ -120,7 +120,7 @@ public class ZipFiles {
             zos.close();
             fis.close();
             fos.close();
-            System.out.println(file.getCanonicalPath()+" esta comprimido en "+zipFileName);
+//            System.out.println(file.getCanonicalPath()+" esta comprimido en "+zipFileName);
             
         } catch (IOException e) {
             e.printStackTrace();
@@ -141,7 +141,7 @@ public class ZipFiles {
             while(ze != null){
                 String fileName = ze.getName();
                 File newFile = new File(destDir + File.separator + fileName);
-                System.out.println("Descomprimiento a "+newFile.getAbsolutePath());
+//                System.out.println("Descomprimiento a "+newFile.getAbsolutePath());
                 //create directories for sub directories in zip
                 new File(newFile.getParent()).mkdirs();
                 FileOutputStream fos = new FileOutputStream(newFile);
